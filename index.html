@@ -1,0 +1,20 @@
+<!DOCTYPE html><html lang="nl"><head><meta charset="utf-8"><title>Pixel Racer</title><style>
+body{margin:0;background:#12141c;color:#eee;font:14px monospace}canvas{image-rendering:pixelated}
+#bar{display:flex;gap:8px;padding:8px;background:#1d2030;align-items:center}button,select,input{font:inherit;background:#2c3150;color:#eee;border:1px solid #4a5080;padding:6px 10px;cursor:pointer}
+#bar b{margin-left:auto;color:#ffc933}.p{display:none;padding:12px}.p.on{display:block}
+.card{display:inline-block;width:150px;margin:4px;padding:6px;background:#1d2030;border:2px solid;vertical-align:top;font-size:12px}
+.card canvas{width:64px;height:64px;display:block}.eq{background:#25304a}
+#race{position:fixed;inset:0;background:#000;display:none}#cv{width:100%;height:100%}
+#res{position:fixed;inset:0;background:#000c;display:none;place-items:center;text-align:center;font-size:18px}
+.shake{animation:s .15s infinite}@keyframes s{50%{transform:rotate(8deg)}}
+</style></head><body>
+<div id="bar"><button data-t="pr">Race</button><button data-t="pg">Garage</button><button data-t="ps">Shop</button><button id="rs">Reset</button><b id="coins"></b></div>
+<div id="pr" class="p on"><h3>Nieuwe race</h3>
+Baan: <select id="tt"><option value="0">Circuit (gras, brede baan)</option><option value="1">Stratencircuit (smal, muren)</option></select>
+Seed: <input id="seed" type="number" value="1" style="width:80px"> <button id="rnd">🎲</button>
+Moeilijkheid: <select id="df"><option value=".75">Makkelijk</option><option value=".9" selected>Normaal</option><option value="1.05">Moeilijk</option></select>
+<p><button id="go">START (3 ronden)</button></p><p>Besturen: pijltjes / WASD. Esc = stoppen. Winst = coins voor crates.</p></div>
+<div id="pg" class="p"><div id="st"></div><canvas id="pv" width="128" height="128"></canvas><div id="inv"></div></div>
+<div id="ps" class="p"><h3>Crates</h3><div id="cr"></div><div id="rev" style="margin-top:12px"></div></div>
+<div id="race"><canvas id="cv"></canvas></div><div id="res"><div id="rt"></div></div>
+<script src="js/data.js"></script><script src="js/track.js"></script><script src="js/game.js"></script></body></html>
